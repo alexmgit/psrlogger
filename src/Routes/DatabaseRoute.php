@@ -1,8 +1,8 @@
 <?php
-namespace Logger\Routers;
+namespace Logger\Routes;
 
 use PDO;
-use Logger\Router;
+use Logger\Route;
 
 /**
  * Class DatabaseRouter
@@ -17,7 +17,7 @@ use Logger\Router;
  *      context text
  * );
  */
-class DatabaseRouter extends Router
+class DatabaseRoute extends Route
 {
 	/**
 	 * @var string Data Source Name

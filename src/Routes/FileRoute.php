@@ -1,12 +1,12 @@
 <?php
-namespace Logger\Routers;
+namespace Logger\Router;
 
-use Logger\Router;
+use Logger\Route;
 
 /**
- * Class FileRouter
+ * Class FileRoute
  */
-class FileRouter extends Router
+class FileRoute extends Route
 {
 	/**
 	 * @var string Путь к файлу

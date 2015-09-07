@@ -6,9 +6,9 @@ use Psr\Log\AbstractLogger;
 use Psr\Log\LoggerInterface;
 
 /**
- * Class Router
+ * Class Route
  */
-abstract class Router extends AbstractLogger implements LoggerInterface
+abstract class Route extends AbstractLogger implements LoggerInterface
 {
 	/**
 	 * @var bool Включен ли роут

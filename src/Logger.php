@@ -13,14 +13,14 @@ class Logger extends AbstractLogger implements LoggerInterface
 	/**
 	 * @var SplObjectStorage Список роутов
 	 */
-	public $routers;
+	public $routes;
 
 	/**
 	 * Конструктор
 	 */
 	public function __construct()
 	{
-		$this->routers = new SplObjectStorage();
+		$this->routes = new SplObjectStorage();
 	}
 
 	/**
@@ -28,18 +28,18 @@ class Logger extends AbstractLogger implements LoggerInterface
 	 */
 	public function log($level, $message, array $context = [])
 	{
-		foreach ($this->routers as $router)
+		foreach ($this->routes as $route)
 		{
-			if (!$router instanceof Router)
+			if (!$route instanceof Route)
 			{
 				continue;
 			}
-			if (!$router->isEnable)
+			if (!$route->isEnable)
 			{
 				continue;
 			}
 
-			$router->log($level, $message, $context);
+			$route->log($level, $message, $context);
 		}
 	}
 }

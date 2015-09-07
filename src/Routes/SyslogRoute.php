@@ -1,13 +1,13 @@
 <?php
-namespace Logger\Routers;
+namespace Logger\Router;
 
-use Logger\Router;
+use Logger\Route;
 use Psr\Log\LogLevel;
 
 /**
- * Class SyslogRouter
+ * Class SyslogRoute
  */
-class SyslogRouter extends Router
+class SyslogRoute extends Route
 {
 	/**
 	 * @var string Шаблон сообщения
