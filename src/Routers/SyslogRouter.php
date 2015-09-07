@@ -10,7 +10,7 @@ use Psr\Log\LogLevel;
 class SyslogRouter extends Router
 {
 	/**
-	 * @var string
+	 * @var string Шаблон сообщения
 	 */
 	public $template = "{message} {context}";
 
@@ -32,6 +32,9 @@ class SyslogRouter extends Router
 	}
 
 	/**
+	 * Преобразование уровня логов в формат подходящий для syslog()
+	 *
+	 * @see http://php.net/manual/en/function.syslog.php
 	 * @param $level
 	 * @return string
 	 */

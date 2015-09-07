@@ -11,14 +11,14 @@ use Psr\Log\LoggerInterface;
 class Logger extends AbstractLogger implements LoggerInterface
 {
 	/**
-	 * @var SplObjectStorage
+	 * @var SplObjectStorage Список роутов
 	 */
 	public $routers;
 
 	/**
-	 * @param array $routers
+	 * Конструктор
 	 */
-	public function __construct(array $routers = [])
+	public function __construct()
 	{
 		$this->routers = new SplObjectStorage();
 	}

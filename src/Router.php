@@ -11,16 +11,18 @@ use Psr\Log\LoggerInterface;
 abstract class Router extends AbstractLogger implements LoggerInterface
 {
 	/**
-	 * @var bool
+	 * @var bool Включен ли роут
 	 */
 	public $isEnable = true;
 	/**
-	 * @var string
+	 * @var string Формат даты логов
 	 */
 	public $dateFormat = DateTime::RFC2822;
 
 	/**
-	 * @param array $attributes
+	 * Конструктор
+	 *
+	 * @param array $attributes Атрибуты роута
 	 */
 	public function __construct(array $attributes = [])
 	{
@@ -34,6 +36,8 @@ abstract class Router extends AbstractLogger implements LoggerInterface
 	}
 
 	/**
+	 * Текущая дата
+	 *
 	 * @return string
 	 */
 	public function getDate()
@@ -42,6 +46,8 @@ abstract class Router extends AbstractLogger implements LoggerInterface
 	}
 
 	/**
+	 * Преобразование $context в строку
+	 *
 	 * @param array $context
 	 * @return string
 	 */

@@ -4,16 +4,18 @@ include 'vendor/autoload.php';
 $logger = new Logger\Logger();
 
 $logger->routers->attach(new Logger\Routers\FileRouter([
-		'filePath' => 'data/default.log',
+	'isEnable'  => true,
+	'filePath'  => 'data/default.log',
 ]));
 
 $logger->routers->attach(new Logger\Routers\DatabaseRouter([
-		'dsn'   => 'sqlite:data/default.sqlite',
-		'table' => 'default_log',
+	'isEnable'  => true,
+	'dsn'       => 'sqlite:data/default.sqlite',
+	'table'     => 'default_log',
 ]));
 
 $logger->routers->attach(new Logger\Routers\SyslogRouter([
-
+	'isEnable'  => true,
 ]));
 
 $logger->info("Info message");

@@ -9,11 +9,11 @@ use Logger\Router;
 class FileRouter extends Router
 {
 	/**
-	 * @var string
+	 * @var string Путь к файлу
 	 */
 	public $filePath;
 	/**
-	 * @var string
+	 * @var string Шаблон сообщения
 	 */
 	public $template = "{date} {level} {message} {context}";
 

@@ -7,6 +7,8 @@ use Logger\Router;
 /**
  * Class DatabaseRouter
  *
+ * Создание таблицы:
+ *
  * CREATE TABLE default_log (
  *      id integer PRIMARY KEY,
  *      date date,
@@ -18,24 +20,25 @@ use Logger\Router;
 class DatabaseRouter extends Router
 {
 	/**
-	 * @var string
+	 * @var string Data Source Name
+	 * @see http://php.net/manual/en/pdo.construct.php
 	 */
 	public $dsn;
 	/**
-	 * @var string
+	 * @var string Имя пользователя БД
 	 */
 	public $username;
 	/**
-	 * @var string
+	 * @var string Пароль пользователя БД
 	 */
 	public $password;
 	/**
-	 * @var string
+	 * @var string Имя таблицы
 	 */
 	public $table;
 
 	/**
-	 * @var PDO
+	 * @var PDO Подключение к БД
 	 */
 	private $connection;
 
