@@ -16,6 +16,11 @@ $logger->routers->attach(new Logger\Routers\SyslogRouter([
 
 ]));
 
-var_dump($logger);
-
+$logger->info("Info message");
+$logger->alert("Alert message");
+$logger->error("Error message");
 $logger->debug("Debug message");
+$logger->notice("Notice message");
+$logger->warning("Warning message");
+$logger->critical("Critical message");
+$logger->emergency("Emergency message");

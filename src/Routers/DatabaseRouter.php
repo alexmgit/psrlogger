@@ -55,8 +55,8 @@ class DatabaseRouter extends Router
 	public function log($level, $message, array $context = [])
 	{
 		$statement = $this->connection->prepare(
-			"INSERT INTO {$this->table} (date, level , message, context) " .
-			"VALUES (:date, :level, :message, :context)"
+			'INSERT INTO ' . $this->table . ' (date, level, message, context) ' .
+			'VALUES (:date, :level, :message, :context)'
 		);
 
 		$statement->bindParam(':date',      $this->getDate());
