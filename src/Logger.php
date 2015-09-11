@@ -11,9 +11,9 @@ use Psr\Log\LoggerInterface;
 class Logger extends AbstractLogger implements LoggerInterface
 {
 	/**
-	 * @var Iterator Список роутов
+	 * @var Iterator|Route[] Список роутов
 	 */
-	public $routes;
+	private $routes;
 
 	/**
 	 * Конструктор
