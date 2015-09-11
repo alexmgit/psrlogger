@@ -2,6 +2,7 @@
 namespace Logger;
 
 use DateTime;
+use ReflectionClass;
 use Psr\Log\AbstractLogger;
 use Psr\Log\LoggerInterface;
 
@@ -13,7 +14,7 @@ abstract class Route extends AbstractLogger implements LoggerInterface
 	/**
 	 * @var bool Включен ли роут
 	 */
-	public $isEnable = true;
+	public $enabled = true;
 	/**
 	 * @var string Формат даты логов
 	 */
@@ -26,11 +27,13 @@ abstract class Route extends AbstractLogger implements LoggerInterface
 	 */
 	public function __construct(array $attributes = [])
 	{
+		$reflection = new ReflectionClass($this);
 		foreach ($attributes as $attribute => $value)
 		{
-			if (property_exists($this, $attribute))
+			$property = $reflection->getProperty($attribute);
+			if ($property->isPublic())
 			{
-				$this->{$attribute} = $value;
+				$property->setValue($this, $value);
 			}
 		}
 	}
@@ -40,7 +43,7 @@ abstract class Route extends AbstractLogger implements LoggerInterface
 	 *
 	 * @return string
 	 */
-	public function getDate()
+	protected function getDate()
 	{
 		return (new DateTime())->format($this->dateFormat);
 	}
@@ -51,7 +54,7 @@ abstract class Route extends AbstractLogger implements LoggerInterface
 	 * @param array $context
 	 * @return string
 	 */
-	public function contextStringify(array $context = [])
+	protected function contextStringify(array $context = [])
 	{
 		return !empty($context) ? json_encode($context) : null;
 	}

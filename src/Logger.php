@@ -1,7 +1,7 @@
 <?php
 namespace Logger;
 
-use SplObjectStorage;
+use Iterator;
 use Psr\Log\AbstractLogger;
 use Psr\Log\LoggerInterface;
 
@@ -11,16 +11,18 @@ use Psr\Log\LoggerInterface;
 class Logger extends AbstractLogger implements LoggerInterface
 {
 	/**
-	 * @var SplObjectStorage Список роутов
+	 * @var Iterator Список роутов
 	 */
 	public $routes;
 
 	/**
 	 * Конструктор
+	 *
+	 * @param Iterator $routes
 	 */
-	public function __construct()
+	public function __construct(Iterator $routes)
 	{
-		$this->routes = new SplObjectStorage();
+		$this->routes = $routes;
 	}
 
 	/**
@@ -34,7 +36,7 @@ class Logger extends AbstractLogger implements LoggerInterface
 			{
 				continue;
 			}
-			if (!$route->isEnable)
+			if (!$route->enabled)
 			{
 				continue;
 			}

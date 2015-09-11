@@ -1,5 +1,5 @@
 <?php
-namespace Logger\Router;
+namespace Logger\Routes;
 
 use Logger\Route;
 use Psr\Log\LogLevel;

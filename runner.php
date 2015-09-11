@@ -1,22 +1,24 @@
 <?php
 include 'vendor/autoload.php';
 
-$logger = new Logger\Logger();
+$routes = new SplObjectStorage();
 
-$logger->routes->attach(new Logger\Routers\FileRoute([
-	'isEnable'  => true,
-	'filePath'  => 'data/default.log',
+$routes->attach(new Logger\Routes\FileRoute([
+	'enabled' => true,
+	'filePath' => 'data/default.log',
 ]));
 
-$logger->routes->attach(new Logger\Routers\DatabaseRoute([
-	'isEnable'  => true,
-	'dsn'       => 'sqlite:data/default.sqlite',
-	'table'     => 'default_log',
+$routes->attach(new Logger\Routes\DatabaseRoute([
+	'enabled' => true,
+	'dsn' => 'sqlite:data/default.sqlite',
+	'table' => 'default_log',
 ]));
 
-$logger->routes->attach(new Logger\Routers\SyslogRoute([
-	'isEnable'  => true,
+$routes->attach(new Logger\Routes\SyslogRoute([
+	'enabled' => true,
 ]));
+
+$logger = new Logger\Logger($routes);
 
 $logger->info("Info message");
 $logger->alert("Alert message");
